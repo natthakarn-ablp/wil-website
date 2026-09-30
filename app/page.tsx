@@ -19,11 +19,21 @@ const benefits = [
   { icon: BarChart3, title: "ประสบการณ์ทำงาน", detail: "เรียนรู้จากสถานการณ์จริงในโรงงาน" },
 ];
 
-const industryPartners = ["SONY", "CONTINENTAL", "GOODYEAR", "Shin-Etsu", "SINGHA", "KHON KAEN BREWERY", "Cal-Comp", "CENTRAL PATTANA", "STARS MICROELECTRONICS", "Sahafarms", "ASIA SILICONES MONOMER"];
-const educationPartners = ["จุฬาลงกรณ์มหาวิทยาลัย", "มหาวิทยาลัยมหาสารคาม", "มจพ. พระนครเหนือ", "มหาวิทยาลัยเกษตรศาสตร์", "มหาวิทยาลัยอุบลราชธานี", "มทร. ธัญบุรี", "มทร. ล้านนา", "สถาบันอาชีวศึกษา"];
+const industryPartners = [
+  ["/partners/sony.webp", "Sony Technology"],
+  ["/partners/continental.webp", "Continental Tyres"],
+  ["/partners/goodyear.webp", "Goodyear"],
+  ["/partners/shinetsu.webp", "Shin-Etsu Silicones"],
+  ["/partners/singha.webp", "Singha Beverage"],
+  ["/partners/cpn.webp", "Central Pattana"],
+  ["/partners/stars.webp", "Stars Microelectronics"],
+  ["/partners/sahafarm.webp", "Sahafarm"],
+  ["/partners/asm.webp", "Asia Silicones Monomer"],
+  ["/partners/lenzing.webp", "Lenzing Thailand"],
+];
 
 function Brand() {
-  return <a className="brand" href="#home" aria-label="SMART 2015 หน้าแรก"><img src="/logo-smart.webp" alt="SMART(2015) Services Co., Ltd." /></a>;
+  return <a className="brand" href="#home" aria-label="SMART 2015 หน้าแรก"><img src="/logo-smart-official.webp" alt="SMART(2015) Services Co., Ltd." /></a>;
 }
 
 function SectionTitle({ eyebrow, title, description }: { eyebrow?: string; title: string; description?: string }) {
@@ -61,9 +71,9 @@ export default function Home() {
 
       <section className="section benefits-section"><div className="container benefits-layout"><div className="benefits-copy"><div className="title-inline"><SectionTitle title="สิ่งที่ผู้เรียนได้รับ" /><p>มากกว่าการเรียน คือโอกาสในการสร้างอนาคต</p></div><div className="benefit-grid">{benefits.map(({ icon: Icon, title, detail }) => <article className="benefit-card" key={title}><span><Icon size={28} /></span><h3>{title}</h3><p>{detail}</p></article>)}</div></div><aside className="quote-panel"><img src="/images/wil-training.webp" alt="นักศึกษา WiL ในโรงงาน" /><blockquote>“โอกาสวันนี้<br />สู่อนาคตที่ดีกว่า”</blockquote></aside></div></section>
 
-      <section className="section partners" id="partners"><div className="container"><div className="title-inline"><SectionTitle title="พันธมิตรของเรา" /><p>ความร่วมมือที่แข็งแกร่ง เพื่อพัฒนากำลังคนสู่อนาคต</p></div><div className="partner-groups"><div><h3>ภาคอุตสาหกรรม</h3><div className="partner-grid industry-grid">{industryPartners.map(name => <div className="partner-logo" key={name}>{name}</div>)}</div></div><div><h3>ภาคการศึกษา</h3><div className="partner-grid education-grid">{educationPartners.map(name => <div className="partner-logo education-logo" key={name}><GraduationCap size={22} /><span>{name}</span></div>)}</div></div></div></div></section>
+      <section className="section partners" id="partners"><div className="container"><div className="title-inline"><SectionTitle title="พันธมิตรของเรา" /><p>ความร่วมมือที่แข็งแกร่ง เพื่อพัฒนากำลังคนสู่อนาคต</p></div><div className="partner-groups"><div><h3>ภาคอุตสาหกรรม</h3><div className="partner-grid industry-grid">{industryPartners.map(([src, name]) => <div className="partner-logo" key={name}><img src={src} alt={name} /></div>)}</div></div><div><h3>ภาคการศึกษา</h3><div className="education-panel"><img src="/partners/education-panel.webp" alt="ตราสถาบันการศึกษาที่ร่วมโครงการ WiL" /></div></div></div></div></section>
 
-      <section className="section news" id="news"><div className="container"><div className="title-row"><div className="title-inline"><SectionTitle title="ข่าวและกิจกรรม" /><p>ติดตามความเคลื่อนไหวล่าสุดของเรา</p></div><a className="text-link desktop-only" href="#news">ดูข่าวทั้งหมด <ArrowRight size={15} /></a></div><div className="news-grid">{[["18 ม.ค. 2567", "ร่วมพัฒนาหลักสูตรกับ มหาวิทยาลัยมหาสารคาม", "wil-career.webp"], ["5 ธ.ค. 2566", "กิจกรรม Team Building ที่ Continental Tyres Thailand", "wil-training.webp"], ["20 พ.ย. 2566", "เปิดรับสมัครเข้าร่วมโครงการ WiL", "wil-hero.webp"]].map(([date, title, image]) => <article className="news-card" key={title}><div className="news-visual"><img src={`/images/${image}`} alt="" /></div><div><small>{date}</small><h3>{title}</h3><p>โครงการบูรณาการเรียนรู้และการทำงานในภาคอุตสาหกรรมจริง</p></div></article>)}</div></div></section>
+      <section className="section news" id="news"><div className="container"><div className="title-row"><div className="title-inline"><SectionTitle title="ข่าวและกิจกรรม" /><p>ติดตามความเคลื่อนไหวล่าสุดของเรา</p></div><a className="text-link desktop-only" href="https://www.facebook.com/SMART2015Services" target="_blank" rel="noreferrer">ดูข่าวทั้งหมด <ArrowRight size={15} /></a></div><div className="news-grid">{[["18 ม.ค. 2567", "ร่วมพัฒนาหลักสูตรกับ มหาวิทยาลัยมหาสารคาม", "news-1.webp"], ["5 ธ.ค. 2566", "กิจกรรม Team Building ที่ Continental Tyres Thailand", "news-2.webp"], ["20 พ.ย. 2566", "เปิดรับสมัครเข้าร่วมโครงการ WiL", "news-3.webp"]].map(([date, title, image]) => <article className="news-card" key={title}><div className="news-visual"><img src={`/news/${image}`} alt={title} /></div><div><small>{date}</small><h3>{title}</h3><p>โครงการบูรณาการเรียนรู้และการทำงานในภาคอุตสาหกรรมจริง</p></div></article>)}</div></div></section>
 
       <section className="career-cta"><div className="career-media" /><div className="container career-inner"><div><h2>ร่วมสร้างอนาคตไปด้วยกัน</h2><p>SMART(2015) Services เปิดรับสมัครบุคลากรทั้งตำแหน่งครูพี่เลี้ยงนักศึกษา และเจ้าหน้าที่สำนักงาน</p><a className="button button-primary" href="#contact">ดูตำแหน่งงาน <ArrowRight size={15} /></a></div><blockquote>คนที่ใช่<br /><strong>อาจเป็นคุณ</strong></blockquote></div></section>
 
